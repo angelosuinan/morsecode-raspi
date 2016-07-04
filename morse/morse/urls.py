@@ -18,5 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^morsecode/', include('morsecode.urls')),
+    url(r'^morsecode/', include('morsecode.urls', namespace = 'morsecode')),
+    url(r'^$', include('home.urls', namespace = 'home')),
 ]
