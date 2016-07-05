@@ -2,5 +2,16 @@
 
 {% block content %}
 <p>base</p>
+
+    <form class="inline-form" action="{% url 'morsecode:encode' %}" method="post">
+                        {% csrf_token %}
+                         <input type="text" class="form-control
+                            clear-focus-highlight" id="txtNewNote"
+                                        name="txtNewMsg"
+                        placeholder="Enter Message">
+                                        <input class="btn btn-raised
+                                        btn-primary btn-sm" type="submit"
+                                        value="Show">
+    </form>
 {% endblock content %}
 
