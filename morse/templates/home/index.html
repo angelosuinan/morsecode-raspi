@@ -4,10 +4,13 @@
 
     <h1>Hello there!</h1>
 
-            <p><a class="btn btn-raised btn-primary btn-lg"
+            <p><a
                   href="{% url 'morsecode:encode' %}"
                                     >output morse code</a></p>
-            <! insert here output, input, SOS>
+
+
+            <p><a href="{% url 'morsecode:decode'  %}">{{ x.start }} input</a></p>
+
 
 
 
