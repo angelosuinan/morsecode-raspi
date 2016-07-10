@@ -60,15 +60,14 @@ class Pimorse(object):
                     self.dash()
                 elif code =='.':
                     self.dot()
+            sleep(1)
     def dash(self):
         self.led.on()
         sleep(2)
         self.led.off()
-        sleep(1)
+        sleep(0.5)
     def dot(self):
         self.led.on()
         sleep(0.5)
         self.led.off()
         sleep(0.5)
-a=Pimorse()
-a.output_morse("angelo")

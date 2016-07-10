@@ -60,6 +60,7 @@ class Pimorse(object):
                     self.dash()
                 elif code =='.':
                     self.dot()
+            sleep(1)
     def dash(self):
         self.led.on()
         sleep(2)
