@@ -1,18 +1,10 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en us>
-    <head>
-        {% block head_meta %}
-                <meta charset="utf-8">
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <meta name="viewport" content="width=device-width,
-                                initial-scale=1">
-                <meta http-equiv="refresh" content="2">
-                    {% endblock head_meta %}
-    </head>
-    <body>
-        <p>{{ text}} </p>
-        <a href={% url 'home:index' %}>GO BACK HOME</a>
-    </body>
+{% extends "base.html" %}
 
-</html>
+{% block custom_meta %}
+    <meta http-equiv="refresh" content="2">
+{% endblock custom_meta %}
+
+{% block content %}
+ <p>{{ text}} </p>
+         <a href={% url 'home:index' %}>GO BACK HOME</a>
+{% endblock content %}
