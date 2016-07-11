@@ -1,7 +1,10 @@
 import time
 from time import sleep
 
+import os
 from gpiozero import Button
+
+
 
 
 class InputMorse(object):
@@ -84,21 +87,36 @@ class InputMorse(object):
 
 
     def begin(self, nextWord=False):
-        start= self.roundoff()
-        while True:
-            timeout = self.get_present(start)
-            if self.button.is_pressed:
-                before = round(self.get_present(start), 2)
-                return self.start(before, start)
-            if nextWord == True and timeout >=4:
-                print (round(timeout, 2))
-                for letter, pat in self.CODE.items():
-                    if self.pattern == pat :
-                        print (letter)
-                self.pattern = ""
-                return self.begin(False)
-            if timeout >= 15:
+        if self.x:
+            start= self.roundoff()
+            while True:
+                timeout = self.get_present(start)
+                if self.button.is_pressed:
+                    before = round(self.get_present(start), 2)
+                    return self.start(before, start)
+                if nextWord == True and timeout >=4:
+                    print (round(timeout, 2))
+                    for letter, pat in self.CODE.items():
+                        if self.pattern == pat :
+                            with open('api.txt','w') as f:
+                                print (letter,file=f)
+                    self.pattern = ""
+                    return self.begin(False)
+                if timeout >= 15:
+                    with open('path', 'w+') as f:
+                        print ("TIMEOUT <<<<<<<<<<<<<i")
+                    return
+    def __init__(self):
+        path =os.path.join(os.path.expanduser('~'),'projects', 'morsecode-raspi',
+        'morse','raspicode','run.txt')
+        self.x=True
+        with open(path, 'r') as f:
+            line1= f.readline()
+            text ="1"
+            if "1" in line1:
+                self.x =False
                 return
-    def __init__(self, number):
-        self.button = Button(number)
+        with open(path, 'w+') as f:
+            f.write("1")
+    button = Button(2)
 

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+import threading
 # Create your views here.
 from django.http import HttpResponse
 from raspicode.test import Pimorse
@@ -12,8 +12,7 @@ class Encode(View):
        # def __init__(self):
         #    p = Pimorse()
          #   p.output_morse("a")
-    def get(self, request, *args):
-
+    def get(self, request, *args, **kwargs):
         return render(request, self.template_name,)
     def post(self, request):
 
@@ -31,8 +30,11 @@ class Encode(View):
 
 class Decode(View):
     template_name = 'morsecode/decode.html'
-    def get(self, request, *args):
+    x=1
+    def get(self, request, *args, **kwargs):
+        t =threading.Thread(target=self.in_morse)
+        t.start()
         return render(request, self.template_name,)
-    def in_morse(self, request, *args):
+    def in_morse(self):
         i = InputMorse()
         i.begin()

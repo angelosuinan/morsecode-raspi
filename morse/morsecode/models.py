@@ -7,9 +7,7 @@ class Message(models.Model):
     entry_date = models.DateTimeField("Entry date")
     def __str__(self):
         return self.message_text
-class Letters(models.Model):
-    m= Message()
-    message = models.ForeignKey(Message,on_delete=models.CASCADE)
+class Letter(models.Model):
     letter_text  = models.CharField(max_length=1)
     def __str__(self):
         return self.letter_text
