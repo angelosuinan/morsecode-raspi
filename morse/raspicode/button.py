@@ -103,20 +103,16 @@ class InputMorse(object):
                     self.pattern = ""
                     return self.begin(False)
                 if timeout >= 15:
-                    with open('path', 'w+') as f:
-                        print ("TIMEOUT <<<<<<<<<<<<<i")
                     return
     def __init__(self):
-        path =os.path.join(os.path.expanduser('~'),'projects', 'morsecode-raspi',
-        'morse','raspicode','run.txt')
         self.x=True
-        with open(path, 'r') as f:
+        with open('run.txt', 'r') as f:
             line1= f.readline()
             text ="1"
             if "1" in line1:
                 self.x =False
                 return
-        with open(path, 'w+') as f:
+        with open('run.txt', 'w+') as f:
             f.write("1")
     button = Button(2)
 

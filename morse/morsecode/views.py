@@ -34,7 +34,11 @@ class Decode(View):
     def get(self, request, *args, **kwargs):
         t =threading.Thread(target=self.in_morse)
         t.start()
-        return render(request, self.template_name,)
+        text = ''
+        with open('api.txt', 'r') as f:
+            text = f.readline()[0]
+
+        return render(request, self.template_name,{"text":text})
     def in_morse(self):
         i = InputMorse()
         i.begin()
