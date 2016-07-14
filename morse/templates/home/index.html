@@ -2,14 +2,17 @@
 
 {% block content %}
 
-    <h1>Hello there!</h1>
-
-            <p><a
+<div class="col-md-12">
+        <div class="jumbotron">
+                    <h1>Hello there!</h1>
+            <p><a class="btn btn-raised btn-primary btn-lg"
                   href="{% url 'morsecode:encode' %}"
                                     >output morse code</a></p>
 
-
-            <p><a href="{% url 'morsecode:decode' %}"> input</a></p>
+           <p><a class="btn btn-raised btn-primary btn-lg"
+               href="{% url 'morsecode:decode' %}"> input</a></p>
+             </div>
+</div>
 
 
 

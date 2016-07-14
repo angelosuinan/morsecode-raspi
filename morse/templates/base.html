@@ -11,6 +11,21 @@
     {% block custom_meta %}
     {% endblock custom_meta %}
     <title>{% block title %}MorseCode DSP{% endblock title %}</title>
+
+
+    {% block head_styles %}
+<link rel="stylesheet" type="text/css"
+    href="{% static 'vendor/bootstrap/3.3.6/css/bootstrap.min.css' %}">
+<!-- Bootstrap Material theme -->
+<link rel="stylesheet" type="text/css"
+    href="{% static 'vendor/bootstrap/themes/material/0.5.9/css/bootstrap-material-design.min.css'
+    %}">
+<link rel="stylesheet" type="text/css"
+    href="{% static 'vendor/bootstrap/themes/material/0.5.9/css/ripples.min.css' %}">
+<!-- Custom styles -->
+<link rel="stylesheet" type="text/css"
+    href="{% static 'css/styles.css' %}">
+    {% endblock head_styles %}
 </head>
 
 
@@ -18,15 +33,53 @@
 
 <body>
     {% block header %}
+    <div class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse"
+          data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span></button>
+          <a class="navbar-brand" href="javascript:void(0)">
+          Morsecode DSP<div class="ripple-container"></div></a>
+        </div>
+        <div class="navbar-collapse collapsenavbar-responsive-collapse">
+        <form class="navbar-form navbar-right" method="get">
+        <div class="form-group is-empty">
+        <div class="input-group">
+        <span class="material-input"></span>
+        <span class="input-group-btn">
+        </span>
+        </div>
+        </div>
+        </form>
+      </div>
+     </div>
+    </div>
     {% endblock header %}
-
+   <div class="container">
     {% block content %}
     {% endblock content %}
-
+   </div>
     {% block footer %}
     {% endblock footer %}
 
     {% block scripts %}
+    <!-- Bootstrap -->
+    <script src="{% static 'vendor/jquery/1.12.2/jquery.min.js' %}">
+    </script>
+    <script src="{% static 'vendor/bootstrap/3.3.6/js/bootstrap.min.js' %}">
+    </script>
+
+    <!-- Bootstrap Material theme -->
+    <script src="{% static 'vendor/bootstrap/themes/material/0.5.9/js/material.min.js' %}">
+    </script>
+    <script src="{% static 'vendor/bootstrap/themes/material/0.5.9/js/ripples.min.js' %}">
+    </script>
+    <script>
+    $.material.init();
+    </script>
     {% endblock scripts %}
 </body>
 

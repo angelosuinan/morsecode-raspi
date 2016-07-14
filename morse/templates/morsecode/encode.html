@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<p>base</p>
-
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-default">
+                                <div class="panel-body">
     <form class="inline-form" action="{% url 'morsecode:encode' %}" method="post">
                         {% csrf_token %}
                          <input type="text" class="form-control
@@ -13,5 +15,9 @@
                                         btn-primary btn-sm" type="submit"
                                         value="Show">
     </form>
+     </div>
+             </div>
+                 </div>
+</div>
 {% endblock content %}
 
